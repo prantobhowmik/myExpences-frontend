@@ -56,7 +56,7 @@ const SignupForm: React.FC = () => {
           onClose={() => setToast(null)}
         />
       )}
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#1e3a8a] to-[#60a5fa] text-[#1e3a8a] px-2">
+  <div className="min-h-screen flex flex-col items-center justify-center bg-white text-neutral-900 px-2">
         <div className="w-full max-w-xs bg-white rounded-xl shadow-xl p-4 flex flex-col items-center gap-4 border border-[#3b82f6]">
           <img
             src={process.env.PUBLIC_URL + '/logo.png'}
@@ -64,27 +64,27 @@ const SignupForm: React.FC = () => {
             className="w-14 h-14 rounded-full shadow bg-white object-cover border border-[#3b82f6] mb-1"
             loading="lazy"
           />
-          <h2 className="text-lg font-extrabold tracking-tight text-center mb-1">Create your <span className="text-[#2563eb]">myExpences</span> account</h2>
+          <h2 className="text-lg font-extrabold tracking-tight text-center mb-1">Create your <span className="text-black">myExpences</span> account</h2>
           <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
           <div className="relative">
-            <input id="full_name" name="full_name" value={form.full_name} onChange={handleChange} required className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-[#eff6ff] text-[#1e3a8a] border border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] placeholder-transparent transition" placeholder="Full Name" />
-            <label htmlFor="full_name" className="absolute left-3 top-2 text-xs text-[#2563eb] font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Full Name</label>
+            <input id="full_name" name="full_name" value={form.full_name} onChange={handleChange} required className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-black placeholder-transparent transition" placeholder="Full Name" />
+            <label htmlFor="full_name" className="absolute left-3 top-2 text-xs text-black font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Full Name</label>
           </div>
           <div className="relative">
-            <input id="username" name="username" value={form.username} onChange={handleChange} required className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-[#eff6ff] text-[#1e3a8a] border border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] placeholder-transparent transition" placeholder="Username" />
-            <label htmlFor="username" className="absolute left-3 top-2 text-xs text-[#2563eb] font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Username</label>
+            <input id="username" name="username" value={form.username} onChange={handleChange} required className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-black placeholder-transparent transition" placeholder="Username" />
+            <label htmlFor="username" className="absolute left-3 top-2 text-xs text-black font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Username</label>
           </div>
           <div className="relative">
-            <input id="email" name="email" value={form.email} onChange={handleChange} required type="email" className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-[#eff6ff] text-[#1e3a8a] border border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] placeholder-transparent transition" placeholder="Email" />
-            <label htmlFor="email" className="absolute left-3 top-2 text-xs text-[#2563eb] font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Email</label>
+            <input id="email" name="email" value={form.email} onChange={handleChange} required type="email" className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-black placeholder-transparent transition" placeholder="Email" />
+            <label htmlFor="email" className="absolute left-3 top-2 text-xs text-black font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Email</label>
           </div>
           <div className="relative">
-            <input id="mobile" name="mobile" value={form.mobile} onChange={handleChange} required className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-[#eff6ff] text-[#1e3a8a] border border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] placeholder-transparent transition" placeholder="Mobile" />
-            <label htmlFor="mobile" className="absolute left-3 top-2 text-xs text-[#2563eb] font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Mobile</label>
+            <input id="mobile" name="mobile" value={form.mobile} onChange={handleChange} required className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-black placeholder-transparent transition" placeholder="Mobile" />
+            <label htmlFor="mobile" className="absolute left-3 top-2 text-xs text-black font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Mobile</label>
           </div>
           <div className="relative">
-            <input id="date_of_birth" name="date_of_birth" value={form.date_of_birth} onChange={handleChange} required type="date" className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-[#eff6ff] text-[#1e3a8a] border border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] placeholder-transparent transition" placeholder="Date of Birth" />
-            <label htmlFor="date_of_birth" className="absolute left-3 top-2 text-xs text-[#2563eb] font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Date of Birth</label>
+            <input id="date_of_birth" name="date_of_birth" value={form.date_of_birth} onChange={handleChange} required type="date" className="peer w-full px-3 pt-6 pb-2 rounded-lg bg-white text-black border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-black placeholder-transparent transition" placeholder="Date of Birth" />
+            <label htmlFor="date_of_birth" className="absolute left-3 top-2 text-xs text-black font-semibold pointer-events-none transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Date of Birth</label>
           </div>
           <div className="relative">
             <input
@@ -102,7 +102,7 @@ const SignupForm: React.FC = () => {
               type="button"
               tabIndex={-1}
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#2563eb] hover:text-[#1e40af] focus:outline-none"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-black hover:text-neutral-400 focus:outline-none"
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
               {showPassword ? (

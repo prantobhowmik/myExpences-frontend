@@ -12,7 +12,7 @@ interface ToastProps {
 const typeStyles: Record<ToastType, string> = {
   success: 'bg-green-500 text-white',
   error: 'bg-red-500 text-white',
-  info: 'bg-blue-500 text-white',
+  info: 'bg-black text-white',
 };
 
 const Toast: React.FC<ToastProps> = ({ message, type = 'info', onClose, duration = 3000 }) => {

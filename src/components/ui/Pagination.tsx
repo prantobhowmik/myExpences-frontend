@@ -11,13 +11,13 @@ const Pagination: React.FC<PaginationProps> = ({ page, pageCount, onPageChange }
   return (
     <nav className="flex justify-center items-center gap-2 mt-4 select-none">
       <button
-        className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium disabled:opacity-50"
+  className="px-3 py-1 rounded bg-white text-black font-medium disabled:opacity-50 border border-neutral-200"
         onClick={() => onPageChange(page - 1)}
         disabled={page === 1}
       >
         Prev
       </button>
-      <span className="px-2 text-gray-600 dark:text-gray-300">
+  <span className="px-2 text-black">
         Page {page} of {pageCount}
       </span>
       <button

@@ -124,7 +124,7 @@ const LoginForm: React.FC = () => {
                 type="button"
                 tabIndex={-1}
                 onClick={() => setShowPassword((v) => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#2563eb] hover:text-[#1e40af] focus:outline-none"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-black hover:text-neutral-400 focus:outline-none"
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? (
