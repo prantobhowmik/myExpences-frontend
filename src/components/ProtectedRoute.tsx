@@ -6,12 +6,24 @@ interface ProtectedRouteProps {
 }
 
 
-// Checks for both JWT and session cookie
+
+// Checks for JWT in localStorage/sessionStorage and validates expiration
+function parseJwt(token: string) {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch {
+    return null;
+  }
+}
+
 const isAuthenticated = () => {
-  const jwt = sessionStorage.getItem('jwt');
-  // Optionally, check for session cookie (set by backend)
-  const hasSessionCookie = document.cookie.split(';').some(c => c.trim().startsWith('session='));
-  return Boolean(jwt) || hasSessionCookie;
+  const jwt = localStorage.getItem('jwt') || sessionStorage.getItem('jwt');
+  if (!jwt) return false;
+  const payload = parseJwt(jwt);
+  if (!payload || !payload.exp) return false;
+  // exp is in seconds since epoch
+  const now = Math.floor(Date.now() / 1000);
+  return payload.exp > now;
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
