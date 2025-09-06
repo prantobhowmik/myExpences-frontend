@@ -5,7 +5,8 @@ import { BASE_URL } from '../api/base';
 interface ExpensePayload {
   amount: number;
   description: string;
-  date: string;
+  date: string; // date part (YYYY-MM-DD)
+  time?: string; // time part (HH:mm)
   category: string;
 }
 
@@ -14,6 +15,7 @@ const AddExpenseWidget: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
     amount: 0,
     description: '',
     date: '',
+    time: '',
     category: '',
   });
   const [loading, setLoading] = useState(false);
@@ -33,10 +35,21 @@ const AddExpenseWidget: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
     setSuccess(false);
     try {
       const token = localStorage.getItem('jwt') || sessionStorage.getItem('jwt');
+      // Combine date and time into ISO string
+      let isoDate = '';
+      if (form.date) {
+        if (form.time) {
+          // Combine date and time, then convert to ISO
+          const dateTime = new Date(`${form.date}T${form.time}`);
+          isoDate = dateTime.toISOString();
+        } else {
+          isoDate = new Date(form.date).toISOString();
+        }
+      }
       const payload = {
         amount: form.amount,
         description: form.description,
-        date: form.date ? new Date(form.date).toISOString() : '',
+        date: isoDate,
         category: form.category,
       };
       const res = await fetch(`${BASE_URL}/expenses`, {
@@ -52,7 +65,7 @@ const AddExpenseWidget: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
         throw new Error(err.message || 'Failed to add expense');
       }
       setSuccess(true);
-      setForm({ amount: 0, description: '', date: '', category: '' });
+      setForm({ amount: 0, description: '', date: '', time: '', category: '' });
       if (onSuccess) onSuccess();
     } catch (err: any) {
       setError(err.message || 'Failed to add expense');
@@ -84,14 +97,24 @@ const AddExpenseWidget: React.FC<{ onSuccess?: () => void }> = ({ onSuccess }) =
           required
           className="px-3 py-2 rounded border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 text-neutral-900 bg-white"
         />
-        <input
-          type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-          required
-          className="px-3 py-2 rounded border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 text-neutral-900 bg-white"
-        />
+        <div className="flex gap-2">
+          <input
+            type="date"
+            name="date"
+            value={form.date}
+            onChange={handleChange}
+            required
+            className="flex-1 px-3 py-2 rounded border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 text-neutral-900 bg-white"
+          />
+          <input
+            type="time"
+            name="time"
+            value={form.time}
+            onChange={handleChange}
+            required
+            className="flex-1 px-3 py-2 rounded border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300 text-neutral-900 bg-white"
+          />
+        </div>
         <select
           name="category"
           value={form.category}
